@@ -46,7 +46,7 @@ On first run, the server automatically generates a self-signed TLS certificate i
    - **Firefox**: Click **Advanced** &rarr; **Accept the Risk and Continue**.
 4. Allow camera permissions when prompted to calibrate and start burning.
 
-Custom certificates can be passed via `--cert <path>` and `--key <path>` (or `SSL_CERT` and `SSL_KEY` environment variables). To force certificate regeneration for new IP addresses, use `--regen-cert`. Do not expose this development server to an untrusted network. The first camera start downloads the pinned MediaPipe runtime and face-landmarker model from public CDNs, so internet access is required. The webcam feed and uploaded image are processed locally and are not sent to those services.
+Custom certificates can be passed via `--cert <path>` and `--key <path>` (or `SSL_CERT` and `SSL_KEY` environment variables). To force certificate regeneration for new IP addresses, use `--regen-cert`. Do not expose this development server to an untrusted network. The first camera start downloads the pinned MediaPipe runtime and face-landmarker model from public CDNs, so internet access is required. Webcam gaze and uploaded-photo processing run locally in the app. Microsoft Clarity is loaded on all pages and may collect usage, interaction, and page data; see the compliance page for details.
 
 ## Try the sample
 

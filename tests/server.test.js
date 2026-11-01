@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import http from "node:http";
 import https from "node:https";
-import { mkdtempSync, rmSync } from "node:fs";
+import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
@@ -16,6 +16,17 @@ import {
 } from "../server.js";
 
 const hasOpenSSL = !spawnSync("openssl", ["version"]).error;
+
+test("all site pages load the Clarity analytics tag in the document head", () => {
+  const pages = ["index.html", "services.html", "masters.html", "rituals.html", "compliance.html", "contact.html"];
+  for (const page of pages) {
+    const html = readFileSync(join(ROOT, page), "utf8");
+    const head = html.match(/<head>([\s\S]*?)<\/head>/i)?.[1];
+    assert.ok(head, `${page} is missing a head element`);
+    assert.match(head, /https:\/\/www\.clarity\.ms\/tag\/"\+i/);
+    assert.match(head, /"z6tcfm2o54"/);
+  }
+});
 
 test("parseArgs parses flags and environment variables", () => {
   const defaultOpts = parseArgs([]);

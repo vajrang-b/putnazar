@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en" class="scrollable">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0d0c0a">
+    <meta name="description" content="OG Occult Masters: Master registry and mugshot dossier of 25 supernatural and occult villains across Telugu, Tamil, Hindi, Kannada, and English cinema.">
+    <title>OG Occult Masters | PUTNAZAR</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/services.css">
+    <link rel="stylesheet" href="css/nav-menu.css">
+    <script type="module" src="js/nav-menu.js"></script>
+    <script type="module" src="js/services.js"></script>
+  </head>
+  <body class="scrollable" data-page="masters">
+    <!-- Sub-page Header -->
+    <header class="subpage-header">
+      <div class="subpage-header-inner">
+        <a class="header-brand" href="./" aria-label="putnazar home">
+          <span class="brand-mark">🧿</span> PUT<span>NAZAR</span>
+        </a>
+        <div class="header-actions">
+          <a href="./" class="header-link-btn header-burn-btn">🔥 Burn Stage</a>
+          <button id="menu-toggle" class="menu-toggle-btn" type="button" aria-expanded="false" aria-label="Open Navigation Menu">
+            <span class="menu-toggle-icon" aria-hidden="true">☰</span>
+            <span>MENU</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Page Content -->
+    <main class="page-container">
+      <!-- Editorial Hero -->
+      <section class="editorial-hero">
+        <span class="editorial-tag">// MASTER DOSSIER &middot; CINEMATIC OCCULT ARCHETYPES</span>
+        <h1 class="editorial-headline">OG Occult Masters</h1>
+        <p class="editorial-lead">
+          Twenty-five legendary supernatural practitioners, necromancers, and occult antagonists across Telugu, Tamil, Hindi, Kannada, and English cinema. 
+          Review their lethal disciplines, examine their verified mugshot records, or invoke their dark pacts before casting Nazar in the Burn Stage.
+        </p>
+      </section>
+
+      <!-- Filter & Sorting Toolbar -->
+      <section class="toolbar-section" aria-label="Filter and Sort Occult Masters">
+        <div class="language-filter-bar">
+          <span class="filter-label">REALM / LANGUAGE:</span>
+          <div class="language-pills" role="tablist">
+            <button type="button" class="lang-pill active" data-lang="all" role="tab" aria-selected="true">
+              All Realms <span class="pill-count">(25)</span>
+            </button>
+            <button type="button" class="lang-pill" data-lang="Telugu" role="tab" aria-selected="false">
+              Telugu <span class="pill-count">(7)</span>
+            </button>
+            <button type="button" class="lang-pill" data-lang="Tamil" role="tab" aria-selected="false">
+              Tamil <span class="pill-count">(4)</span>
+            </button>
+            <button type="button" class="lang-pill" data-lang="Hindi" role="tab" aria-selected="false">
+              Hindi <span class="pill-count">(5)</span>
+            </button>
+            <button type="button" class="lang-pill" data-lang="Kannada" role="tab" aria-selected="false">
+              Kannada <span class="pill-count">(3)</span>
+            </button>
+            <button type="button" class="lang-pill" data-lang="English" role="tab" aria-selected="false">
+              English / Hollywood <span class="pill-count">(6)</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="controls-bar">
+          <div class="search-box">
+            <span class="search-icon" aria-hidden="true">🔍</span>
+            <input type="text" id="villain-search" placeholder="Search master, actor, movie, occult power..." aria-label="Search occult masters">
+            <button type="button" id="clear-search" class="clear-search-btn" aria-label="Clear search" hidden>&times;</button>
+          </div>
+
+          <div class="sort-box">
+            <label for="sort-select" class="sort-label">ORDER BY:</label>
+            <select id="sort-select" class="sort-select" aria-label="Sort occult masters">
+              <option value="chrono-asc">Year: Oldest &rarr; Newest (1984 &rarr; 2024)</option>
+              <option value="chrono-desc">Year: Newest &rarr; Oldest (2024 &rarr; 1984)</option>
+              <option value="name-asc">Master Name (A &rarr; Z)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="results-meta">
+          <span id="results-count" class="results-count">Displaying 25 Occult Masters</span>
+          <span class="results-hint">Click &ldquo;Invoke Service&rdquo; to contract an occult master</span>
+        </div>
+      </section>
+
+      <!-- Occult Masters Grid -->
+      <section id="masters-section" class="masters-section" aria-label="Occult Masters Directory">
+        <div id="villains-grid" class="villains-grid">
+          <!-- Dynamically populated by js/services.js -->
+        </div>
+        <div id="no-results" class="no-results" hidden>
+          <span class="no-results-icon">☠️</span>
+          <h3>No Masters Found</h3>
+          <p>No occult entity matches your query. Clear your search or select a different realm.</p>
+          <button type="button" id="reset-filters-btn" class="button button-quiet">Reset Filters</button>
+        </div>
+      </section>
+
+      <!-- Editorial CTA -->
+      <section class="editorial-cta" style="margin-top: 60px;">
+        <h3>Ready to Put Nazar on an Adversary?</h3>
+        <p>
+          Do not harm others through illegal rituals. Put Nazar legally using our client-side gaze-burning experience to safely dissolve toxic energy.
+        </p>
+        <a href="./" class="button-primary">🔥 Launch Gaze Burner</a>
+      </section>
+
+      <!-- Editorial Footer -->
+      <footer class="editorial-footer">
+        <div>
+          PUTNAZAR &middot; Distipettu Cultural Experience &copy; 2026.
+        </div>
+        <div class="footer-nav-links">
+          <a href="./">Burn Stage</a>
+          <a href="services.html">Services</a>
+          <a href="masters.html">OG Occult Masters</a>
+          <a href="rituals.html">Traditions</a>
+          <a href="compliance.html">Compliance</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      </footer>
+    </main>
+
+    <!-- Occult Service Pact Modal -->
+    <div id="pact-modal" class="pact-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+      <div class="pact-modal-backdrop"></div>
+      <div class="pact-modal-card">
+        <button type="button" id="close-modal-btn" class="close-modal-btn" aria-label="Close pact chamber">&times;</button>
+        
+        <div id="pact-form-view" class="pact-view active">
+          <div class="pact-header">
+            <div class="pact-avatar-wrap">
+              <img id="pact-master-img" src="" alt="Master avatar" class="pact-avatar">
+              <span id="pact-master-sigil" class="pact-sigil">🪬</span>
+            </div>
+            <div>
+              <div class="pact-realm-badge"><span id="pact-master-realm"></span> &middot; <span id="pact-master-year"></span></div>
+              <h2 id="modal-title" class="pact-title">Contract with <span id="pact-master-name"></span></h2>
+              <div id="pact-master-movie" class="pact-subtitle"></div>
+            </div>
+          </div>
+
+          <div class="pact-discipline-box">
+            <div class="discipline-label">PRIMARY OCCULT PRACTICE:</div>
+            <div id="pact-master-practice" class="discipline-val"></div>
+            <div class="discipline-label" style="margin-top: 10px;">CORE SERVICE OFFERED:</div>
+            <div id="pact-master-service" class="service-val"></div>
+            <div class="offering-required">
+              <strong>Required Offering:</strong> <span id="pact-master-offering"></span>
+            </div>
+          </div>
+
+          <form id="pact-form" class="pact-form">
+            <div class="form-group">
+              <label for="pact-target-input" class="form-label">
+                TARGET / ADVERSARY TO BIND:
+                <span class="label-hint">(Enter enemy, toxic tormentor, or leave generic)</span>
+              </label>
+              <input type="text" id="pact-target-input" class="form-input" placeholder="e.g. Malicious Betrayer, Toxic Boss, Narcissistic Nemesis..." required>
+            </div>
+
+            <div class="form-group">
+              <label for="pact-rite-select" class="form-label">SELECT OCCULT SERVICE RITE:</label>
+              <select id="pact-rite-select" class="form-select">
+                <option value="nazar">🧿 Put Nazar / Distipettu (100% Legal & Approved Client-side Ward)</option>
+                <option value="vashikaran">⚠️ Vashikaran Subjugation (Strictly Prohibited & Illegal under Penal Law)</option>
+                <option value="chetapadi">⚠️ Chetapadi / Death Curse (Strictly Prohibited & Illegal under Anti-Superstition Act)</option>
+                <option value="necromancy">⚠️ Graveyard Ash Binding / Nara Bali (Strictly Prohibited & Criminal Offense)</option>
+              </select>
+            </div>
+
+            <div class="offerings-checklist">
+              <div class="checklist-title">CONFIRM OFFERING & INTENT:</div>
+              <label class="check-item">
+                <input type="checkbox" required checked>
+                <span>I offer pure focused intent to expel this poison from my life.</span>
+              </label>
+              <label class="check-item">
+                <input type="checkbox" required checked>
+                <span>I invoke this pact for catharsis, psychic closure, and complete severance.</span>
+              </label>
+            </div>
+
+            <button type="submit" id="seal-pact-btn" class="button button-primary seal-pact-btn">
+              🩸 SEAL OCCULT PACT & ENACT RITUAL
+            </button>
+          </form>
+        </div>
+
+        <!-- Pact Decree / Result View -->
+        <div id="pact-decree-view" class="pact-view" hidden>
+          <div class="decree-header">
+            <div class="decree-seal">🧿</div>
+            <div class="decree-id" id="decree-pact-id">PACT-TEL-2009-8819</div>
+            <h2 class="decree-title">OCCULT DECREE SEALED</h2>
+            <p class="decree-lead">The dark rite has been initiated. The target has been bound under the shadow of the master.</p>
+          </div>
+
+          <div class="talisman-scroll">
+            <div class="scroll-border">
+              <div class="scroll-target-banner">
+                <span class="scroll-label">BOUND TARGET:</span>
+                <span id="decree-target-name" class="scroll-target"></span>
+              </div>
+              <div class="scroll-row">
+                <span class="scroll-k">PRESIDING MASTER:</span>
+                <span id="decree-master-name" class="scroll-v"></span>
+              </div>
+              <div class="scroll-row">
+                <span class="scroll-k">DARK PRACTICE:</span>
+                <span id="decree-practice" class="scroll-v"></span>
+              </div>
+              <div class="scroll-row">
+                <span class="scroll-k">MANTRA CHANTED:</span>
+                <span id="decree-incantation" class="scroll-mantra"></span>
+              </div>
+              <div class="scroll-status" id="decree-status-line">
+                <span class="status-dot"></span> STATUS: BINDING ACTIVE &middot; ENERGY HARNESSED
+              </div>
+              <div id="decree-legal-warning" class="decree-legal-warning" hidden>
+                <div class="legal-warning-badge">⚠️ CRIMINAL / ILLEGAL SERVICE NOTICE</div>
+                <p>Except for <strong>Put Nazar (Distipettu)</strong>, all real-world black magic, vashikaran subjugation, and occult curses are <strong>strictly illegal felonies</strong> under Penal, Cyber, and Anti-Superstition statutes. We do not perform or tolerate real harm. Use Put Nazar to safely dissolve toxic energy.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="decree-actions">
+            <a id="decree-burn-btn" href="./" class="button button-primary decree-action-btn">
+              🔥 Incinerate in Gaze Burn Stage
+            </a>
+            <button type="button" id="copy-decree-btn" class="button button-quiet">
+              📜 Copy Decree Mantra
+            </button>
+            <button type="button" id="new-pact-btn" class="button button-quiet">
+              Contract Another Master
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Occult Audio Element -->
+    <audio id="occult-audio" loop preload="none">
+      <source src="./assets/paper-burn.mp3" type="audio/mpeg">
+      <source src="./assets/paper-burn.ogg" type="audio/ogg">
+    </audio>
+
+    <!-- Universal Site Navigation Menu Drawer -->
+    <div id="site-menu" class="site-menu-drawer" aria-hidden="true" hidden>
+      <div class="menu-backdrop" id="menu-backdrop"></div>
+      <div class="menu-panel">
+        <div class="menu-panel-header">
+          <div class="menu-brand">
+            <span class="brand-mark">🧿</span>
+            <span>PUT<span>NAZAR</span></span>
+          </div>
+          <button id="menu-close" class="menu-close-btn" type="button" aria-label="Close menu">&times;</button>
+        </div>
+        <div class="menu-subheading">INDEX</div>
+        <nav class="menu-nav">
+          <a href="./" class="menu-nav-item" data-page="home">
+            <span class="menu-nav-num">01</span>
+            <div class="menu-nav-info">
+              <span class="menu-nav-title">Burn Stage</span>
+              <span class="menu-nav-desc">Webcam gaze photo-burning app</span>
+            </div>
+          </a>
+          <a href="services.html" class="menu-nav-item" data-page="services">
+            <span class="menu-nav-num">02</span>
+            <div class="menu-nav-info">
+              <span class="menu-nav-title">Services Directory</span>
+              <span class="menu-nav-desc">Legal Nazar vs. Prohibited Revenge</span>
+            </div>
+          </a>
+          <a href="rituals.html" class="menu-nav-item" data-page="rituals">
+            <span class="menu-nav-num">03</span>
+            <div class="menu-nav-info">
+              <span class="menu-nav-title">Rituals &amp; Remedies</span>
+              <span class="menu-nav-desc">Traditional Disti &amp; Evil Eye folklore</span>
+            </div>
+          </a>
+          <a href="compliance.html" class="menu-nav-item" data-page="compliance">
+            <span class="menu-nav-num">04</span>
+            <div class="menu-nav-info">
+              <span class="menu-nav-title">Legal &amp; Privacy</span>
+              <span class="menu-nav-desc">Zero-cloud &amp; non-arson policy</span>
+            </div>
+          </a>
+          <a href="contact.html" class="menu-nav-item" data-page="contact">
+            <span class="menu-nav-num">05</span>
+            <div class="menu-nav-info">
+              <span class="menu-nav-title">Contact Us</span>
+              <span class="menu-nav-desc">Send us a message</span>
+            </div>
+          </a>
+        </nav>
+        <div class="menu-footer">
+          <span class="status-dot"></span> 100% Legal &middot; Local Browser Privacy
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "gaze-burn",
+  "version": "1.0.0",
+  "description": "Webcam gaze-controlled photo-burning experiment",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "serve": "node server.js",
+    "serve:https": "node server.js --https",
+    "https": "node server.js --https",
+    "test": "node --test \"tests/**/*.test.js\""
+  }
+}

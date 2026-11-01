@@ -1,0 +1,206 @@
+/* ==========================================================================
+   PUTNAZAR - Minimalist Navigation Menu & Drawer
+   ========================================================================== */
+
+.menu-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border, #272420);
+  color: var(--paper, #efebe4);
+  cursor: pointer;
+  font: 700 11.5px var(--mono, monospace);
+  letter-spacing: 0.08em;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.menu-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--border-light, #3a3630);
+  color: #fff;
+}
+
+.menu-toggle-btn[aria-expanded="true"] {
+  background: rgba(255, 98, 48, 0.12);
+  border-color: var(--ember, #ff6230);
+  color: var(--ember, #ff6230);
+}
+
+.menu-toggle-icon {
+  font-size: 13px;
+  line-height: 1;
+}
+
+/* Drawer overlay */
+.site-menu-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.site-menu-drawer[hidden] {
+  display: none !important;
+}
+
+.menu-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 7, 6, 0.85);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  cursor: pointer;
+}
+
+.menu-panel {
+  position: relative;
+  width: min(100%, 360px);
+  height: 100%;
+  background: #0e0d0b;
+  border-left: 1px solid #272420;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  overflow-y: auto;
+  padding: 24px;
+  box-sizing: border-box;
+  animation: menuPanelSlide 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (max-width: 420px) {
+  .menu-panel { width: 100%; border-left: none; padding: 20px 18px; }
+}
+
+@keyframes menuPanelSlide {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.menu-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #272420;
+}
+
+.menu-brand {
+  font: 900 14px var(--display, "Cinzel Decorative", serif);
+  letter-spacing: 0.1em;
+  color: #efebe4;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+}
+
+.menu-brand span {
+  color: #ff6230;
+}
+
+.menu-close-btn {
+  background: transparent;
+  border: 1px solid #272420;
+  border-radius: 4px;
+  color: #8a8479;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.menu-close-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border-color: #3a3630;
+}
+
+.menu-subheading {
+  font: 700 10.5px var(--mono, monospace);
+  letter-spacing: 0.14em;
+  color: #5c5850;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.menu-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid #201e1a;
+  text-decoration: none;
+  color: #efebe4;
+  transition: all 0.15s ease;
+}
+
+.menu-nav-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: #3a3630;
+  transform: translateX(-2px);
+}
+
+.menu-nav-item.active {
+  background: rgba(255, 98, 48, 0.08);
+  border-color: rgba(255, 98, 48, 0.4);
+}
+
+.menu-nav-num {
+  font: 700 11px var(--mono, monospace);
+  color: #ff6230;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.menu-nav-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.menu-nav-title {
+  font: 700 14px var(--sans, sans-serif);
+  color: #fff;
+}
+
+.menu-nav-desc {
+  font-size: 11px;
+  color: #8a8479;
+}
+
+.menu-footer {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid #272420;
+  font: 600 11px var(--mono, monospace);
+  color: #5c5850;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menu-footer .status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+}

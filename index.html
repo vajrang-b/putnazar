@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en" class="app-viewport">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#11100f">
+    <meta name="description" content="A webcam gaze-controlled photo-burning experience with on-screen fire effects.">
+    <title>putnazar</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/nav-menu.css">
+    <script type="module" src="js/nav-menu.js"></script>
+    <script type="module" src="js/main.js"></script>
+  </head>
+  <body class="app-viewport" data-page="home">
+    <main class="app-shell">
+      <header class="masthead">
+        <a class="wordmark" href="./" aria-label="putnazar home"><span class="brand-mark">🧿</span> PUT<span>NAZAR</span></a>
+        <div class="masthead-actions">
+          <button id="menu-toggle" class="menu-toggle-btn text-button" type="button" aria-expanded="false" aria-label="Open Navigation Menu">
+            <span class="menu-toggle-icon" aria-hidden="true">☰</span>
+            <span class="menu-toggle-label">Menu</span>
+          </button>
+          <button id="audio-toggle" type="button" aria-label="Toggle audio" title="Mute or unmute burning sound">🔊</button>
+          <button id="clear-training" class="text-button" type="button" hidden>Clear training</button>
+          <button id="stop-camera" class="text-button" type="button" hidden>Stop camera</button>
+        </div>
+      </header>
+
+      <section id="photo-section" class="workspace" aria-label="putnazar">
+        <div class="workspace-bar">
+          <div>
+            <p id="status" class="status-line" role="status" aria-live="polite">Choose an option to begin: upload a photo of person to put nazar, or try samples</p>
+          </div>
+          <div class="gaze-status"><span class="status-light"></span><span id="gaze-status">WAITING</span></div>
+        </div>
+        <div id="burn-stage" class="burn-stage" aria-label="Photo burn area">
+          <canvas id="photo-canvas" aria-label="Photo canvas, burned away by your gaze"></canvas>
+          <canvas id="flame-canvas" aria-hidden="true"></canvas>
+          <div id="welcome-modal" class="welcome-modal">
+            <div class="welcome-card">
+              <div class="welcome-badge">
+                <span class="nazar-icon" aria-hidden="true">🧿</span>
+                <span>PUT NAZAR</span>
+              </div>
+              <h2 class="welcome-title">Burn away toxic energy & misery</h2>
+              <p class="welcome-subtitle">Lock eyes with someone toxic using your gaze to incinerate their memory and burn them into ash.</p>
+              <div class="welcome-options">
+                <label for="photo-file" class="button button-primary welcome-option-btn">
+                  <span class="option-icon" aria-hidden="true">📤</span>
+                  <span class="option-text">Upload photo of person to put nazar</span>
+                </label>
+                <button id="try-samples" class="button button-quiet welcome-option-btn" type="button">
+                  <span class="option-icon" aria-hidden="true">👤</span>
+                  <span class="option-text">Try samples</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div id="nazar-countdown" class="nazar-countdown" aria-live="polite" aria-label="Starting nazar countdown" hidden>
+            <div class="countdown-card">
+              <div class="countdown-badge">
+                <span class="countdown-nazar-icon" aria-hidden="true">🧿</span>
+                <span class="countdown-badge-title">STARTING NAZAR</span>
+              </div>
+              <div class="countdown-timer">
+                <svg class="countdown-svg" viewBox="0 0 120 120" aria-hidden="true">
+                  <circle class="countdown-track" cx="60" cy="60" r="52"></circle>
+                  <circle id="countdown-progress" class="countdown-progress" cx="60" cy="60" r="52"></circle>
+                </svg>
+                <div id="countdown-number" class="countdown-number">3</div>
+              </div>
+              <p id="countdown-hint" class="countdown-hint">Lock eyes with the target</p>
+              <div id="countdown-calibration-pill" class="countdown-calibration-pill" hidden>
+                <span class="calibration-dot"></span>
+                <span id="countdown-calibration-label">Calibrating gaze…</span>
+              </div>
+            </div>
+          </div>
+          <div id="calibration-panel" class="calibration-panel" aria-hidden="true" hidden>
+            <div id="calibration-target" class="calibration-target" aria-hidden="true"></div>
+            <div class="calibration-badge"><span id="calibration-count">01 / 16</span></div>
+          </div>
+          <div id="stage-empty" class="stage-empty" hidden>
+            <span class="empty-spark" aria-hidden="true">✳</span>
+            <p>Preparing photo</p>
+          </div>
+          <div class="camera-card" data-active="false" aria-hidden="true">
+            <video id="camera" autoplay muted playsinline aria-label="Local webcam feed"></video>
+            <div id="camera-placeholder" class="camera-placeholder">
+              <span class="camera-orbit" aria-hidden="true"><i></i><i></i><i></i></span>
+            </div>
+            <div class="camera-caption"><span class="record-dot"></span><span id="camera-state">CAMERA OFF</span></div>
+          </div>
+          <div id="complete-message" class="complete-message" hidden>
+            <div class="complete-card">
+              <div class="somatic-box">
+                <span class="breath-pulse" aria-hidden="true"></span>
+                <span>The Negative Void &middot; Irreversible</span>
+              </div>
+              <h3>Nothing remains. Only the cold weight of ash.</h3>
+              <p class="somatic-prompt">No closure. No redemption. Only the hollow silence where a life once was.</p>
+              <p class="release-body">You held your gaze until their face burned away, but fire does not bring peace&mdash;it only destroys. Every laughter you shared, every betrayal that fractured you, and every memory that once bound you together has collapsed into cold black dust. No words will ever be spoken again. No apology will ever come. They are erased from the living world, and all that remains is the emptiness of a quiet room and the heavy, unfixable tragedy of what was lost.</p>
+              <p class="release-affirmation">Reduced to absolute zero. Erased into nothingness.</p>
+              <div class="complete-actions">
+                <button id="burn-again" class="button button-primary" type="button">Burn again</button>
+                <label id="complete-upload" class="button button-quiet" for="photo-file">Burn another memory</label>
+                <button id="complete-samples" class="button button-quiet" type="button">Try samples</button>
+              </div>
+            </div>
+          </div>
+          <span id="burn-status" class="burn-status" hidden>DEMO IMAGE</span>
+        </div>
+        <div id="calibration-instructions" class="sr-only" aria-live="polite" hidden>
+          <span id="calibration-title">Look at the glowing tile.</span>
+          <span id="calibration-hint">Keep your face centered and move only your eyes.</span>
+        </div>
+        <div class="control-bar">
+          <span id="burn-hint"></span>
+          <div class="control-actions">
+            <button id="restart-burn" class="button button-quiet" type="button" hidden>Burn them again</button>
+            <button id="start-camera" class="button button-primary" type="button" hidden>Start burning</button>
+            <button id="retry-calibration" class="button button-primary" type="button" hidden>Retry calibration</button>
+            <button id="quick-calibration" class="button button-quiet" type="button" hidden>Quick recalibrate</button>
+            <input id="photo-file" type="file" accept="image/*">
+          </div>
+        </div>
+      </section>
+    </main>
+    <div id="gaze-cursor" class="gaze-cursor" aria-hidden="true">
+      <svg class="charge-ring" viewBox="0 0 44 44" aria-hidden="true">
+        <circle class="charge-track" cx="22" cy="22" r="18"></circle>
+        <circle class="charge-meter" cx="22" cy="22" r="18"></circle>
+      </svg>
+      <span class="cursor-dot"></span>
+    </div>
+    <audio id="burn-audio" loop preload="auto" aria-hidden="true">
+      <source src="./assets/Amazing Paper burning sound.mp3" type="audio/mpeg">
+      <source src="./assets/paper-burn.ogg" type="audio/ogg">
+      <source src="./assets/paperburn.ogg" type="audio/ogg">
+      <source src="./assets/paper-burn.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Universal Site Navigation Menu Drawer -->
+    <div id="site-menu" class="site-menu-drawer" aria-hidden="true" hidden>
+      <div class="menu-backdrop" id="menu-backdrop"></div>
+      <div class="menu-panel">
+        <div class="menu-panel-header">
+          <div class="menu-brand">
+            <span class="brand-mark">🧿</span>
+            <span>PUT<span>NAZAR</span></span>
+          </div>
+          <button id="menu-close" class="menu-close-btn" type="button" aria-label="Close menu">&times;</button>
+        </div>
+        <div class="menu-subheading">INDEX</div>
+        <nav class="menu-nav">
+          <a href="./" class="menu-nav-item active" data-page="home">
+            <span class="menu-nav-num">01</span>
+            <div class="menu-nav-info">
+              <span class="menu-nav-title">Burn Stage</span>
+              <span class="menu-nav-desc">Webcam gaze photo-burning app</span>
+            </div>
+          </a>
+          <a href="services.html" class="menu-nav-item" data-page="services">
+            <span class="menu-nav-num">02</span>
+            <div class="menu-nav-info">
+              <span class="menu-nav-title">Services Directory</span>
+              <span class="menu-nav-desc">Legal Nazar vs. Prohibited Revenge</span>
+            </div>
+          </a>
+          <a href="rituals.html" class="menu-nav-item" data-page="rituals">
+            <span class="menu-nav-num">03</span>
+            <div class="menu-nav-info">
+              <span class="menu-nav-title">Rituals &amp; Remedies</span>
+              <span class="menu-nav-desc">Traditional Disti &amp; Evil Eye folklore</span>
+            </div>
+          </a>
+          <a href="compliance.html" class="menu-nav-item" data-page="compliance">
+            <span class="menu-nav-num">04</span>
+            <div class="menu-nav-info">
+              <span class="menu-nav-title">Legal &amp; Privacy</span>
+              <span class="menu-nav-desc">Zero-cloud &amp; non-arson policy</span>
+            </div>
+          </a>
+          <a href="contact.html" class="menu-nav-item" data-page="contact">
+            <span class="menu-nav-num">05</span>
+            <div class="menu-nav-info">
+              <span class="menu-nav-title">Contact Us</span>
+              <span class="menu-nav-desc">Send us a message</span>
+            </div>
+          </a>
+        </nav>
+        <div class="menu-footer">
+          <span class="status-dot"></span> 100% Legal &middot; In-Browser Privacy
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
